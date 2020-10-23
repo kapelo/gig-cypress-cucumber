@@ -21,6 +21,10 @@
     "cypress": "^5.4.0"
   },
   "devDependencies": {
+    "cypress-cucumber-preprocessor": "^4.0.0",
     "typescript": "^4.0.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }
