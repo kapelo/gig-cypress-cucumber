@@ -1,0 +1,26 @@
+{
+  "name": "gig-cypress-cucumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapelo/gig-cypress-cucumber.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kapelo/gig-cypress-cucumber/issues"
+  },
+  "homepage": "https://github.com/kapelo/gig-cypress-cucumber#readme",
+  "dependencies": {
+    "cypress": "^5.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}
