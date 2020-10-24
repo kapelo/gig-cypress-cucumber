@@ -22,11 +22,11 @@ export default class AccountPage extends BasePage {
     }
 
     validateUserEmail() {
-        const expectedEmail = Cypress.env('email');
+        const expectedEmail = Cypress.env('validemail');
 
         cy.clickElement(this.personalInfoLinkText);
 
-        cy.get(this.emailFieldLocator).invoke('text').then((actualEmail) => {
+        cy.get(this.emailFieldLocator).invoke('val').then((actualEmail) => {
             expect(actualEmail).equal(expectedEmail);
         });
     }
