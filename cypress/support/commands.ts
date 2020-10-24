@@ -23,3 +23,25 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+declare namespace Cypress {
+    interface Chainable<Subject> {
+        enterText(locator: any, text: string): Cypress.Chainable<void>;
+        clickElement(locator: any): Cypress.Chainable<void>;
+    }
+}
+  
+function enterText(locator: any, text: string): void {
+    let element = cy.get(locator);
+    element.clear();
+    element.type(text);
+}
+
+Cypress.Commands.add("enterText", enterText);
+
+function clickElement(locator: any): void {
+    let element = cy.get(locator);
+    element.click();
+}
+
+Cypress.Commands.add("clickElement", clickElement);

@@ -1,7 +1,3 @@
-/// <reference types="cypress" />
-
-const { config } = require('cypress/types/bluebird')
-
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -16,7 +12,15 @@ const { config } = require('cypress/types/bluebird')
 // the project's config changing)
 
 const cucumber = require('cypress-cucumber-preprocessor').default
+const wp = require("@cypress/webpack-preprocessor");
 
 module.exports = (on, config) => {
   on('file:preprocessor', cucumber())
 }
+
+module.exports = on => {
+    const options = {
+        webpackOptions: require("../../webpack.config.js")
+    };
+    on("file:preprocessor", wp(options));
+};
