@@ -4,7 +4,6 @@ import AccountPage from '../page-objects/account-page';
 import LandingPage from '../page-objects/landing-page';
 import LoginPage from '../page-objects/login-page';
 
-
 let accountPage = new AccountPage();
 let landingPage = new LandingPage();
 let loginPage = new LoginPage();
