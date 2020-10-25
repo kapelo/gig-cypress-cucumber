@@ -1,8 +1,8 @@
 import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
 
-import AccountPage from '../page-objects/account-page';
-import LandingPage from '../page-objects/landing-page';
-import LoginPage from '../page-objects/login-page';
+import AccountPage from '../../page-objects/account-page';
+import LandingPage from '../../page-objects/landing-page';
+import LoginPage from '../../page-objects/login-page';
 
 let accountPage = new AccountPage();
 let landingPage = new LandingPage();

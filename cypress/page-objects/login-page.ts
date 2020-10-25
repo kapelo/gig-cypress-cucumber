@@ -14,7 +14,7 @@ export default class LoginPage extends BasePage {
     signInNavLinkLocator = ".login";
     loginHeaderLocator  = "#center_column";
 
-    login(credType: string) {
+    login(credType: string): void {
         const userEmail = Cypress.env(credType + 'email');
         const userPassword = Cypress.env(credType + 'password');
 
@@ -29,25 +29,25 @@ export default class LoginPage extends BasePage {
         cy.clickElement(this.signInButtonLocator);
     }
 
-    validateAlertMessage(expectedAlertMessage: string) {
+    validateAlertMessage(expectedAlertMessage: string): void {
         cy.get(this.alertMessageLabelocator).children().eq(1).invoke('text').then((actualAlertError) => {
             expect(actualAlertError.trim()).equal(expectedAlertMessage);
         });
     }
 
-    validateUserFirstAndLastNameDoesNotShow() {
+    validateUserFirstAndLastNameDoesNotShow(): void {
         const accountPage = new AccountPage();
 
         accountPage.getUserFirstAndLastNameLocator().should('not.exist');
     }
 
-    validateSignOutNavLinkDoesNotShow() {
+    validateSignOutNavLinkDoesNotShow(): void {
         const accountPage = new AccountPage();
 
         accountPage.getSignOutNavLinkLocator().should('not.exist');
     }
 
-    validateHeaderTextIsDisplayed() {
+    validateHeaderTextIsDisplayed(): void {
         cy.get(this.loginHeaderLocator).contains('Authentication').should('be.visible');
     }
 }

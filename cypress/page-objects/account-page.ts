@@ -13,33 +13,27 @@ export default class AccountPage extends BasePage {
     personalInfoLinkText = ".icon-user";
     emailFieldLocator = "#email";
 
-    validateUserFirstAndLastName() {
+    validateUserFirstAndLastName(): void {
         const expectedFirstLastName = Cypress.env('firstLastName');
 
-        cy.get(this.accountNameNavLinkLocator).invoke('text').then((actualFirstAndLastName) => {
-            expect(actualFirstAndLastName).equal(expectedFirstLastName);
-        });
+        cy.get(this.accountNameNavLinkLocator).should('have.text', expectedFirstLastName);
     }
 
-    validateUserEmail() {
+    validateUserEmail(): void {
         const expectedEmail = Cypress.env('validemail');
 
         cy.clickElement(this.personalInfoLinkText);
 
-        cy.get(this.emailFieldLocator).invoke('val').then((actualEmail) => {
-            expect(actualEmail).equal(expectedEmail);
-        });
+        cy.get(this.emailFieldLocator).should('have.value', expectedEmail);
     }
 
-    validateSignOutNavLinkText() {
+    validateSignOutNavLinkText(): void {
         const expectedSignOutNavLinkText = 'Sign out';
 
-        cy.get(this.signOutNavLinkLocator).invoke('text').then((actualSignOutNavLinkText) => {
-            expect(actualSignOutNavLinkText.trim()).equal(expectedSignOutNavLinkText);
-        });
+        cy.get(this.signOutNavLinkLocator).should('contain', expectedSignOutNavLinkText);
     }
 
-    logout() {
+    logout(): LoginPage {
         cy.clickElement(this.signOutNavLinkLocator);
 
         return new LoginPage();

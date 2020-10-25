@@ -13,27 +13,27 @@ export default class LandingPage extends BasePage {
     searchButtonLocator = ".btn.button-search";
     cartItemsCount = ".ajax_cart_quantity.unvisible";
 
-    navigate() {
+    navigate(): void {
         cy.visit('/');
     }
 
-    navigateTo(link: string) {
+    navigateTo(link: string): void {
         cy.visit('/' + link);
     }
 
-    navigateToLoginPage() {
+    navigateToLoginPage(): LoginPage {
         cy.clickElement(this.signInNavLinkLocator);
 
         return new LoginPage();
     }
 
-    getSignInText() {
+    getSignInText(): void {
         cy.get('.login').invoke('text').then((text) => {
             return text.trim();
         });
     }
 
-    search(searchTerm: any) {
+    search(searchTerm: any): SearchPage {
         cy.enterText(this.searchFieldLocator, searchTerm);
         cy.clickElement(this.searchButtonLocator);
 
@@ -41,7 +41,7 @@ export default class LandingPage extends BasePage {
     }
 
 
-    validateCartIsEmpty() {
+    validateCartIsEmpty(): void {
         cy.get(this.cartItemsCount).invoke('text').then(noOfItemsInCart => {
             expect(parseInt(noOfItemsInCart)).to.eq(0);
         });

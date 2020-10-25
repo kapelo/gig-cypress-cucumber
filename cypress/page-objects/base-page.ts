@@ -2,11 +2,11 @@ export default class BasePage {
 
     //baseUrl       = "https://www.entrycentral.com";
     
-    navigate(path: string) {
+    navigate(path: string): void {
         cy.visit(path);
     }
 
-    validatePageTitle(pageTitle: string) {
+    validatePageTitle(pageTitle: string): void {
         cy.title().should('eq', pageTitle);
     }
 

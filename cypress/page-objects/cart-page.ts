@@ -14,18 +14,18 @@ export default class CartPage extends BasePage {
     deleteIconLocator = ".icon-trash";
     proceedToCheckoutCartLocator = ".button.btn.btn-default.standard-checkout.button-medium";
 
-    validateHeaderTextIsDisplayed() {
+    validateHeaderTextIsDisplayed(): void {
         cy.get(this.cartTitleLocator).contains('Shopping-cart summary').should('be.visible');
     }
 
-    validateItemsInCart(expectedNoOfItems: number) {
+    validateItemsInCart(expectedNoOfItems: number): void {
         for (let index = 0; index < expectedNoOfItems; index++) {
             this.validateProductNameInCart(index);
             this.validateProductCostInCart(index);
         }
     }
 
-    validateProductNameInCart(elementIndex: number) {
+    validateProductNameInCart(elementIndex: number): void {
         this.getAllCartItems().children().find('.product-name').eq(elementIndex).invoke('text').then(actualProductName => {
             cy.get<string>("@productName" + elementIndex).then(expectedProductName => {
                 expect(expectedProductName.trim()).equal(actualProductName);
@@ -33,7 +33,7 @@ export default class CartPage extends BasePage {
         });
     }
 
-    validateProductCostInCart(elementIndex: number) {
+    validateProductCostInCart(elementIndex: number): void {
         cy.get('[data-title=\"Total\"]').eq(elementIndex).invoke('text').then(actualProductPrice => {
             cy.get<string>("@productPrice" + elementIndex).then(expectedProductPrice => {
                 expect(expectedProductPrice.trim()).equal(actualProductPrice.trim());
@@ -41,11 +41,11 @@ export default class CartPage extends BasePage {
         });
     }
 
-    validateNumberOfItemsInCart(expectedNumberOfItems: number) {
+    validateNumberOfItemsInCart(expectedNumberOfItems: number): void {
         this.getAllCartItems().should('have.length', expectedNumberOfItems);
     }
 
-    increaseItemQuantity(itemIndex: number, quantity: string) {
+    increaseItemQuantity(itemIndex: number, quantity: string): void {
         this.getQuantityFieldElement(itemIndex).invoke('val').then(oldProductQuantity =>  {
 
             this.getQuantityFieldElement(itemIndex).clear().type(quantity);
@@ -59,17 +59,17 @@ export default class CartPage extends BasePage {
         });
     }
 
-    validateQuantityOfItemInCart(itemIndex: number, quantity: string) {
+    validateQuantityOfItemInCart(itemIndex: number, quantity: string): void {
         this.getQuantityFieldElement(itemIndex).invoke('val').then(currentProductQuantity =>  {
             expect(currentProductQuantity).to.eq(quantity);
         });
     }
 
-    deleteItem(elementIndex: number) {
+    deleteItem(elementIndex: number): void {
         cy.get(this.deleteIconLocator).eq(elementIndex).click();
     }
 
-    validateItemIsDeleted(elementIndex: number) {
+    validateItemIsDeleted(elementIndex: number): void {
         cy.wait(3000);
 
         cy.get<string>("@productName" + elementIndex).then(deletedProductName => {
@@ -85,7 +85,7 @@ export default class CartPage extends BasePage {
         });
     }
 
-    validateProductIsInCart(elementIndex: number) {
+    validateProductIsInCart(elementIndex: number): void {
         cy.get<string>("@productName" + elementIndex).then(expectedProductName => {
             this.getAllCartItems().children().find('.product-name').then(elements => {
                 
@@ -106,7 +106,7 @@ export default class CartPage extends BasePage {
         return cy.get(this.quantityInputFieldLocator).eq(index);
     }
 
-    proceedToCheckout() {
+    proceedToCheckout(): LoginPage {
         cy.clickElement(this.proceedToCheckoutCartLocator);
 
         return new LoginPage();

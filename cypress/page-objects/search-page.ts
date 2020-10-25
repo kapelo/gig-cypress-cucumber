@@ -19,7 +19,7 @@ export default class SearchPage extends BasePage {
     allItemsInCartLocator = ".button.ajax_add_to_cart_button";
     cartItemsCount = ".ajax_cart_quantity.unvisible";
 
-    addItemsToCart(numberOfItems: number) {
+    addItemsToCart(numberOfItems: number): void {
         for (let index = 0; index < numberOfItems; index++) {
             //Add item to cart
             this.addItemToCart(index);
@@ -53,13 +53,13 @@ export default class SearchPage extends BasePage {
         }
     }
 
-    proceedToCheckout() {
+    proceedToCheckout(): CartPage {
         cy.clickElement(this.proceedToCheckoutSearchLocator);
 
         return new CartPage();
     }
 
-    addItemToCart(elementIndex: number) {
+    addItemToCart(elementIndex: number): void {
         cy.get(this.productListsLocator).children().eq(elementIndex).then(element => {
             element.trigger('mouseover');
             cy.get(this.productListsLocator).children().eq(elementIndex).contains("Add to cart").click();

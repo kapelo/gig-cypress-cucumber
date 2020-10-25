@@ -1,9 +1,9 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-import LoginPage from '../page-objects/login-page';
-import LandingPage from '../page-objects/landing-page';
-import CartPage from '../page-objects/cart-page';
-import SearchPage from '../page-objects/search-page';
+import LoginPage from '../../page-objects/login-page';
+import LandingPage from '../../page-objects/landing-page';
+import CartPage from '../../page-objects/cart-page';
+import SearchPage from '../../page-objects/search-page';
 
 let landingPage = new LandingPage();
 let searchPage = new SearchPage();

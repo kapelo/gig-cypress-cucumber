@@ -1,5 +1,7 @@
 {
     "baseUrl" : "http://www.automationpractice.com",
+    "watchForFileChanges": false,
+    "retries": 1,
     "testFiles": "**/*.feature",
     "env" : {
         "noemail": "",
