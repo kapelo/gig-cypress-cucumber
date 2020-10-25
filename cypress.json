@@ -1,0 +1,15 @@
+{
+    "baseUrl" : "http://www.automationpractice.com",
+    "watchForFileChanges": false,
+    "retries": 1,
+    "testFiles": "**/*.feature",
+    "env" : {
+        "noemail": "",
+        "nopassword": "",
+        "validemail": "aniekan.eshiet@gmail.com",
+        "validpassword": "globacom",
+        "invalidemail": "tester@gmail.com",
+        "invalidpassword": "testPass",
+        "firstLastName": "Aniekan Eshiet"
+    }
+}
