@@ -7,6 +7,6 @@
     },
     "include": [
         "./node_modules/cypress",
-        "**/*.ts", "cypress/plugins/index.js", "cypress/support/commands.ts"
+        "**/*.ts", "cypress/plugins/index.js", "cypress/support/commands.ts", "cypress/support/index.js"
     ]
 }

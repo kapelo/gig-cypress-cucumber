@@ -11,8 +11,8 @@ export default class LoginPage extends BasePage {
     passwordFieldLocator = "#passwd";
     alertMessageLabelocator = ".alert.alert-danger";
     signInButtonLocator = "#SubmitLogin";
-
     signInNavLinkLocator = ".login";
+    loginHeaderLocator  = "#center_column";
 
     login(credType: string) {
         const userEmail = Cypress.env(credType + 'email');
@@ -45,5 +45,9 @@ export default class LoginPage extends BasePage {
         const accountPage = new AccountPage();
 
         accountPage.getSignOutNavLinkLocator().should('not.exist');
+    }
+
+    validateHeaderTextIsDisplayed() {
+        cy.get(this.loginHeaderLocator).contains('Authentication').should('be.visible');
     }
 }

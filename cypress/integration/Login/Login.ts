@@ -41,6 +41,7 @@ And('user logs out', (credType) => {
 
 Then('user should be signed out', () => {
   loginPage.validatePageTitle(loginPageTitle);
+  loginPage.validateHeaderTextIsDisplayed();
   loginPage.validateUserFirstAndLastNameDoesNotShow();
   loginPage.validateSignOutNavLinkDoesNotShow();
 });
