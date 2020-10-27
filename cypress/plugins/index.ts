@@ -20,7 +20,7 @@ module.exports = (on: (arg0: string, arg1: any) => void, config: any) => {
 
 module.exports = (on: (arg0: string, arg1: any) => void) => {
     const options = {
-        webpackOptions: require("../../webpack.config.js")
+        webpackOptions: require("../../webpack.config.ts")
     };
     on("file:preprocessor", wp(options));
 };
